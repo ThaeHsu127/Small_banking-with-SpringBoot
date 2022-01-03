@@ -14,10 +14,10 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 
     Account queryByAllGetAccount();
 
-    @Query(value = "SELECT COUNT(*) FROM account where account.available_balance >0",nativeQuery = true)
+    @Query(value = "SELECT COUNT(*) FROM account where available_balance >0 ",nativeQuery = true)
 
     Account queryByCountBalance();
 
-    @Query(value = "SELECT  SUM(account.available_balance) FROM account",nativeQuery = true)
-    Account queryByCalculateTotalMoney(double availableBalance);
+    @Query(value = "SELECT SUM(available_balance) FROM account",nativeQuery = true)
+    Account queryByCalculateTotalMoney();
 }

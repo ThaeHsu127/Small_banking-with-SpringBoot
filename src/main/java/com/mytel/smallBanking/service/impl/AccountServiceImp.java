@@ -23,7 +23,7 @@ public class AccountServiceImp implements AccountService {
     }
 
     @Override
-    public Account calculateTotalMoney(double availableBalance) {
-        return accountRepository.queryByCalculateTotalMoney(availableBalance);
+    public Account calculateTotalMoney() {
+        return accountRepository.queryByCalculateTotalMoney();
     }
 }

@@ -62,11 +62,10 @@ public class AccountController {
         return accountService.countBalance();
 
     }
-
     //calculate total emoney
     @GetMapping("/totalMoney")
-    public Account calculateTotalMoney(double availableBalance){
-        return accountService.calculateTotalMoney(availableBalance);
+    public Account calculateTotalMoney(){
+        return accountService.calculateTotalMoney();
 
     }
 

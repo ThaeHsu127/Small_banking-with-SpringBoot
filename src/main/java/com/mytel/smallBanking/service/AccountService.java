@@ -9,5 +9,5 @@ public interface AccountService {
 
     Account countBalance();
 
-    Account calculateTotalMoney(double availableBalance);
+    Account calculateTotalMoney();
 }
