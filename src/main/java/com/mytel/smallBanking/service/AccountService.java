@@ -5,5 +5,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface AccountService {
-    Account findByAllAccount(String accountId);
+    Account findByAllAccount();
+
+    Account countBalance();
+
+    Account calculateTotalMoney(double availableBalance);
 }

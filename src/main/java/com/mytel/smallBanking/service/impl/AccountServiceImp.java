@@ -13,7 +13,17 @@ public class AccountServiceImp implements AccountService {
     private AccountRepository accountRepository;
 
     @Override
-    public Account findByAllAccount(String accountId) {
-        return accountRepository.queryByAllGetAccount(accountId);
+    public Account findByAllAccount() {
+        return accountRepository.queryByAllGetAccount();
+    }
+
+    @Override
+    public Account countBalance() {
+        return accountRepository.queryByCountBalance();
+    }
+
+    @Override
+    public Account calculateTotalMoney(double availableBalance) {
+        return accountRepository.queryByCalculateTotalMoney(availableBalance);
     }
 }

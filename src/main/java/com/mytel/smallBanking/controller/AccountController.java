@@ -52,10 +52,24 @@ public class AccountController {
     }
     //get allAccount
     @GetMapping("/getAllAccount")
-    public Account getAllAccounts(String accountId){
-        return accountService.findByAllAccount(accountId);
+    public Account getAllAccounts(){
+        return accountService.findByAllAccount();
 
     }
+    //count total account which have balance >0
+    @GetMapping("/count")
+    public Account countBalanceGreaterZero(){
+        return accountService.countBalance();
+
+    }
+
+    //calculate total emoney
+    @GetMapping("/totalMoney")
+    public Account calculateTotalMoney(double availableBalance){
+        return accountService.calculateTotalMoney(availableBalance);
+
+    }
+
 
 
 

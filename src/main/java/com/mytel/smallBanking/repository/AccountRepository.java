@@ -9,7 +9,15 @@ import java.util.Optional;
 
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {
-    @Query(value = "SELECT account_id FROM small_banking.account",nativeQuery = true)
+    @Query(value = "SELECT account_id FROM account"
+            ,nativeQuery = true)
 
-    Account queryByAllGetAccount(String accountId);
+    Account queryByAllGetAccount();
+
+    @Query(value = "SELECT COUNT(*) FROM account where account.available_balance >0",nativeQuery = true)
+
+    Account queryByCountBalance();
+
+    @Query(value = "SELECT  SUM(account.available_balance) FROM account",nativeQuery = true)
+    Account queryByCalculateTotalMoney(double availableBalance);
 }
