@@ -10,7 +10,7 @@ import java.util.List;
 public interface AccountService {
     List<AccountProj> findByAllAccount();
 
-    Account countBalance();
+    List<Account> countBalance();
 
-    Account calculateTotalMoney();
+    List<Account> calculateTotalMoney();
 }

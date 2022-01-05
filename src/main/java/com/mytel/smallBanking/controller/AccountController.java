@@ -59,13 +59,13 @@ public class AccountController {
     }
     //count total account which have balance >0
     @GetMapping("/count")
-    public Account countBalanceGreaterZero(){
+    public List<Account> countBalanceGreaterZero(){
         return accountService.countBalance();
 
     }
     //calculate total emoney
     @GetMapping("/totalMoney")
-    public Account calculateTotalMoney(){
+    public List<Account> calculateTotalMoney(){
         return accountService.calculateTotalMoney();
 
     }

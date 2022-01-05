@@ -21,12 +21,12 @@ public class AccountServiceImp implements AccountService {
     }
 
     @Override
-    public Account countBalance() {
+    public List<Account> countBalance() {
         return accountRepository.queryByCountBalance();
     }
 
     @Override
-    public Account calculateTotalMoney() {
+    public List<Account> calculateTotalMoney() {
         return accountRepository.queryByCalculateTotalMoney();
     }
 }
