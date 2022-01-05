@@ -16,17 +16,17 @@ public class AccountServiceImp implements AccountService {
     private AccountRepository accountRepository;
 
     @Override
-    public List<AccountProj> findByAllAccount() {
+    public List<Account> findByAllAccount() {
         return accountRepository.queryByAllGetAccount();
     }
 
     @Override
-    public List<Account> countBalance() {
+    public double countBalance() {
         return accountRepository.queryByCountBalance();
     }
 
     @Override
-    public List<Account> calculateTotalMoney() {
+    public double calculateTotalMoney() {
         return accountRepository.queryByCalculateTotalMoney();
     }
 }
