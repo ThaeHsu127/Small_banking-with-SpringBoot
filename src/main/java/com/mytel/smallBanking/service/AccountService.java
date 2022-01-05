@@ -8,9 +8,9 @@ import java.util.List;
 
 @Service
 public interface AccountService {
-    List<AccountProj> findByAllAccount();
+    List<Account> findByAllAccount();
 
-    List<Account> countBalance();
+    double countBalance();
 
-    List<Account> calculateTotalMoney();
+    double calculateTotalMoney();
 }
