@@ -1,7 +1,6 @@
 package com.mytel.smallBanking.controller;
 
 import com.mytel.smallBanking.exception.ResourceNotFoundException;
-import com.mytel.smallBanking.projection.AccountProj;
 import com.mytel.smallBanking.repository.AccountRepository;
 import com.mytel.smallBanking.model.Account;
 import com.mytel.smallBanking.service.AccountService;
@@ -53,7 +52,7 @@ public class AccountController {
     }
     //get allAccount
     @GetMapping("/getAllAccount")
-    public List<AccountProj> getAllAccounts(){
+    public List<Account> getAllAccounts(){
         return accountService.findByAllAccount();
 
     }
