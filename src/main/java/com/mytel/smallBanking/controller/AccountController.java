@@ -57,9 +57,16 @@ public class AccountController {
 
     }
     //count total account which have balance >0
+//    @GetMapping("/count")
+//    public double countBalanceGreaterZero(){
+//        return accountService.countBalance();
+//
+//    }
+
     @GetMapping("/count")
-    public double countBalanceGreaterZero(){
-        return accountService.countBalance();
+    @ResponseBody
+    public ResponseEntity<Double> countBalanceGreaterZero1(){
+        return new ResponseEntity<>(accountService.countBalance(),HttpStatus.OK);
 
     }
     //calculate total emoney
