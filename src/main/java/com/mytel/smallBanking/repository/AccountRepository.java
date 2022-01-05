@@ -10,14 +10,14 @@ import java.util.List;
 
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {
-    @Query(value = "SELECT account_id FROM account"
+    @Query(value = "SELECT * FROM account"
             ,nativeQuery = true)
-    List<AccountProj> queryByAllGetAccount();
+    List<Account> queryByAllGetAccount();
 
     @Query(value = "SELECT COUNT(*) FROM account where available_balance >0",nativeQuery = true)
 
-    List<Account> queryByCountBalance();
+    double queryByCountBalance();
 
     @Query(value = "SELECT SUM(available_balance) FROM account",nativeQuery = true)
-    List<Account> queryByCalculateTotalMoney();
+    double queryByCalculateTotalMoney();
 }
