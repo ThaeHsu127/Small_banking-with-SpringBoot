@@ -18,31 +18,16 @@ public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
+    @Column(name ="id")
     private Long id;
-    @Column
     private String transactionId;
-
     @Enumerated(EnumType.STRING)
-    @Column
     private TransactionType transactionType;
-
-    @Column
     private String fromAccount;
-
-    @Column
     private String toAccount;
-
-    @Column
     private double amount;
-
-    @Column
     private String status;
-
-    @Column
     private LocalDateTime transactionAt;
-
-    @Column
     private LocalDateTime lastUpdatedAt;
 
 
