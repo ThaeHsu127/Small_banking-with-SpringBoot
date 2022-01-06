@@ -22,30 +22,30 @@ public class AccountController {
     private AccountService accountService;
 
     @PostMapping("/register")
-    public Account registerAccount(@RequestBody Account account) {
-        return accountRepository.save(account);
-    }
+    public ResponseEntity<?> registerAccount(@RequestBody RegisterRequest regRequest) {
+        return new ResponseEntity<>(accountService.register(regRequest), HttpStatus.OK);
 
+    }
     @GetMapping
     public List<Account> showAllAccounts() {
         return accountRepository.findAll();
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Account> updateAccount(@PathVariable("id") long id, @RequestBody Account account) {
+    public ResponseEntity<?> updateAccount(@PathVariable("id") long id, @RequestBody RegisterRequest regRequest) {
         Account updateAccount = accountRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UpdateAccount not exist with id:" + id));
-        updateAccount.setAccountId(account.getAccountId());
-        updateAccount.setName(account.getName());
-        updateAccount.setPhone(account.getPhone());
-        updateAccount.setAvailableBalance(account.getAvailableBalance());
+        updateAccount.setAccountId(regRequest.getAccountId());
+        updateAccount.setName(regRequest.getName());
+        updateAccount.setPhone(regRequest.getPhone());
+        updateAccount.setAvailableBalance(regRequest.getAvailableBalance());
         accountRepository.save(updateAccount);
         return ResponseEntity.ok(updateAccount);
 
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<HttpStatus> deleteAccount(@PathVariable Long id) {
+    public ResponseEntity<?> deleteAccount(@PathVariable Long id) {
         Account deleteAccount = accountRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Account not exist with id:" + id));
         accountRepository.delete(deleteAccount);

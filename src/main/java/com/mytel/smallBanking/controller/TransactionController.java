@@ -32,39 +32,6 @@ public class TransactionController {
     @Autowired
     TransactionRepository transactionRepository;
 
-    @PostMapping("/saveTrans")
-    public Transaction saveTransaction(@RequestBody Transaction transaction) {
-        return transactionRepository.save(transaction);
-    }
-    @GetMapping
-    public List<Transaction> showAllTransactions(){
-        return transactionRepository.findAll();
-    }
-
-    @PutMapping("{id}")
-    public ResponseEntity<Transaction> updateTransaction(@PathVariable("id") long id, @RequestBody Transaction transaction) {
-        Transaction updateTransaction = transactionRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Transaction not exist with id:" + id));
-        updateTransaction.setTransactionType(transaction.getTransactionType());
-        updateTransaction.setToAccount(transaction.getToAccount());
-        updateTransaction.setFromAccount(transaction.getFromAccount());
-        updateTransaction.setAmount(transaction.getAmount());
-        updateTransaction.setStatus(transaction.getStatus());
-        updateTransaction.setTransactionAt(LocalDateTime.parse(transaction.getTransactionAt().toString()));
-        updateTransaction.setLastUpdatedAt(LocalDateTime.parse(transaction.getLastUpdatedAt().toString()));
-        transactionRepository.save(updateTransaction);
-        return ResponseEntity.ok(updateTransaction);
-
-    }
-    @DeleteMapping("{id}")
-    public ResponseEntity<HttpStatus> deleteTransaction(@PathVariable Long id) {
-        Transaction deleteTransaction = transactionRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Transaction not exist with id:" + id));
-        transactionRepository.delete(deleteTransaction);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
-
-
     @PostMapping("/deposit")
     public ResponseEntity<?> deposit(@RequestBody DepositRequest request){
         return depositBusiness.onDeposit(request);
@@ -73,8 +40,6 @@ public class TransactionController {
     @PostMapping("/withdraw")
     public ResponseEntity<?> withdraw(@RequestBody WithdrawRequest withdrawRequest) {
         return withdrawBusiness.onWithdraw(withdrawRequest);
-
-
 
     }
     @PostMapping("/transfer")
