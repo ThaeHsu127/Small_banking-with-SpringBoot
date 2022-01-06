@@ -20,8 +20,8 @@ public class AccountServiceImp implements AccountService {
     }
 
     @Override
-    public double countBalance() {
-        return accountRepository.queryByCountBalance();
+    public double countBalance() {return accountRepository.queryByCountBalance();
+
     }
 
     @Override

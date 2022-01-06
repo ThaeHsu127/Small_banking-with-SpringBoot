@@ -14,7 +14,6 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     List<Account> queryByAllGetAccount();
 
     @Query(value = "SELECT COUNT(*) FROM account where available_balance >0",nativeQuery = true)
-
     double queryByCountBalance();
 
     @Query(value = "SELECT SUM(available_balance) FROM account",nativeQuery = true)

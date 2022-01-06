@@ -43,6 +43,7 @@ public class AccountController {
         return ResponseEntity.ok(updateAccount);
 
     }
+
     @DeleteMapping("{id}")
     public ResponseEntity<HttpStatus> deleteAccount(@PathVariable Long id) {
         Account deleteAccount = accountRepository.findById(id)
@@ -50,9 +51,10 @@ public class AccountController {
         accountRepository.delete(deleteAccount);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
     //get allAccount
     @GetMapping("/getAllAccount")
-    public List<Account> getAllAccounts(){
+    public List<Account> getAllAccounts() {
         return accountService.findByAllAccount();
 
     }
@@ -64,19 +66,17 @@ public class AccountController {
 //    }
 
     @GetMapping("/count")
-    @ResponseBody
-    public ResponseEntity<Double> countBalanceGreaterZero1(){
-        return new ResponseEntity<>(accountService.countBalance(),HttpStatus.OK);
+    public ResponseEntity<?> countBalanceGreaterZero() {
+        return new ResponseEntity<>(accountService.countBalance(), HttpStatus.OK);
 
     }
+
     //calculate total emoney
     @GetMapping("/totalMoney")
-    public double calculateTotalMoney(){
-        return accountService.calculateTotalMoney();
+    public ResponseEntity<?> calculateTotalMoney() {
+        return new ResponseEntity<>(accountService.calculateTotalMoney(), HttpStatus.OK);
 
     }
-
-
 
 
 }
