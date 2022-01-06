@@ -23,8 +23,8 @@ public class Transaction {
     private String transactionId;
     @Enumerated(EnumType.STRING)
     private TransactionType transactionType;
-    private String fromAccount;
-    private String toAccount;
+    private Long fromAccount;
+    private Long toAccount;
     private double amount;
     private String status;
     private LocalDateTime transactionAt;

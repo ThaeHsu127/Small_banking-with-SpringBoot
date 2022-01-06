@@ -1,15 +1,15 @@
 package com.mytel.smallBanking.controller;
 
 public class WithdrawRequest {
-    String fromAccountNo;
+    Long fromAccountNo;
     Double amount;
     String content;
 
-    public String getFromAccountNo() {
+    public Long getFromAccountNo() {
         return fromAccountNo;
     }
 
-    public void setFromAccountNo(String fromAccountNo) {
+    public void setFromAccountNo(Long fromAccountNo) {
         this.fromAccountNo = fromAccountNo;
     }
 

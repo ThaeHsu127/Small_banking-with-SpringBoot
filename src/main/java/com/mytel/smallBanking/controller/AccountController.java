@@ -54,7 +54,7 @@ public class AccountController {
 
     //get allAccount
     @GetMapping("/getAllAccount")
-    public List<Account> getAllAccounts() {
+    public List<RegisterRequest> getAllAccounts() {
         return accountService.findByAllAccount();
 
     }

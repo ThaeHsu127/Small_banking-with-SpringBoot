@@ -12,7 +12,7 @@ import java.util.List;
 public interface AccountRepository extends JpaRepository<Account, Long> {
     @Query(value = "SELECT * FROM account"
             ,nativeQuery = true)
-    List<Account> queryByAllGetAccount();
+    List<RegisterRequest> queryByAllGetAccount();
 
     @Query(value = "SELECT COUNT(*) FROM account where available_balance >0",nativeQuery = true)
     double queryByCountBalance();

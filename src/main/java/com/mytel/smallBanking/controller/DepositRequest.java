@@ -1,15 +1,15 @@
 package com.mytel.smallBanking.controller;
 
 public class DepositRequest {
-    String toAccountNo;
+    Long toAccountNo;
     Double amount;
     String content;
 
-    public String getToAccountNo() {
+    public Long getToAccountNo() {
         return toAccountNo;
     }
 
-    public void setToAccountNo(String toAccountNo) {
+    public void setToAccountNo(Long toAccountNo) {
         this.toAccountNo = toAccountNo;
     }
 

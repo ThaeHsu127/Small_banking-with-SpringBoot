@@ -19,7 +19,7 @@ public class AccountServiceImp implements AccountService {
 
     @Override
     public ResponseEntity<?> register(RegisterRequest regRequest) {
-        Account account=new Account();
+        Account account = new Account();
         account.setAccountId(regRequest.getAccountId());
         account.setPhone(regRequest.getPhone());
         account.setName(regRequest.getName());
@@ -29,12 +29,13 @@ public class AccountServiceImp implements AccountService {
     }
 
     @Override
-    public List<Account> findByAllAccount() {
+    public List<RegisterRequest> findByAllAccount() {
         return accountRepository.queryByAllGetAccount();
     }
 
     @Override
-    public double countBalance() {return accountRepository.queryByCountBalance();
+    public double countBalance() {
+        return accountRepository.queryByCountBalance();
 
     }
 
@@ -42,7 +43,6 @@ public class AccountServiceImp implements AccountService {
     public double calculateTotalMoney() {
         return accountRepository.queryByCalculateTotalMoney();
     }
-
 
 
 }

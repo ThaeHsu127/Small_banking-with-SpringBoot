@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 public interface AccountService {
-    List<Account> findByAllAccount();
+    List<RegisterRequest> findByAllAccount();
 
     double countBalance();
 

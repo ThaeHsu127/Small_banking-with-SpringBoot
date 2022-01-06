@@ -1,25 +1,25 @@
 package com.mytel.smallBanking.controller;
 
 public class TransferRequest {
-    String fromAccountNo;
-    String toAccountNo;
+    Long fromAccountNo;
+    Long toAccountNo;
     Double amount;
     String content;
 
-    public String getFromAccountNo() {
-        return fromAccountNo;
-    }
-
-    public void setFromAccountNo(String fromAccountNo) {
-        this.fromAccountNo = fromAccountNo;
-    }
-
-    public String getToAccountNo() {
+    public Long getToAccountNo() {
         return toAccountNo;
     }
 
-    public void setToAccountNo(String toAccountNo) {
+    public void setToAccountNo(Long toAccountNo) {
         this.toAccountNo = toAccountNo;
+    }
+
+    public Long getFromAccountNo() {
+        return fromAccountNo;
+    }
+
+    public void setFromAccountNo(Long fromAccountNo) {
+        this.fromAccountNo = fromAccountNo;
     }
 
     public Double getAmount() {

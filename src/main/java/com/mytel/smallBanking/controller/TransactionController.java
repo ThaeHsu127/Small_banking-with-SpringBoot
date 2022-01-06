@@ -33,17 +33,17 @@ public class TransactionController {
     TransactionRepository transactionRepository;
 
     @PostMapping("/deposit")
-    public ResponseEntity<?> deposit(@RequestBody DepositRequest request){
+    public ResponseEntity<?> deposit(@RequestBody DepositRequest request) throws Exception {
         return depositBusiness.onDeposit(request);
 
     }
     @PostMapping("/withdraw")
-    public ResponseEntity<?> withdraw(@RequestBody WithdrawRequest withdrawRequest) {
+    public ResponseEntity<?> withdraw(@RequestBody WithdrawRequest withdrawRequest) throws Exception {
         return withdrawBusiness.onWithdraw(withdrawRequest);
 
     }
     @PostMapping("/transfer")
-    public ResponseEntity<?> transfer(@RequestBody TransferRequest transferRequest) {
+    public ResponseEntity<?> transfer(@RequestBody TransferRequest transferRequest) throws Exception {
         return transferBusiness.onTransfer(transferRequest);
 
 
