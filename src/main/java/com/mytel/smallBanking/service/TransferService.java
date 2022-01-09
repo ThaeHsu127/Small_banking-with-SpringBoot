@@ -21,7 +21,7 @@ public class TransferService {
     @Autowired
     TransactionRepository transactionRepository;
 
-    public ResponseEntity<?> onTransfer(@RequestBody TransferRequest transferRequest) throws Exception {
+    public ResponseEntity<?> onTransfer(TransferRequest transferRequest) throws Exception {
         Transaction transaction = new Transaction();
         transaction.setFromAccount(transferRequest.getFromAccountNo());
         transaction.setToAccount(transferRequest.getToAccountNo());
@@ -43,7 +43,7 @@ public class TransferService {
 
     }
 
-    public ResponseEntity<?> onTransferFee(@RequestBody TransferRequest request) throws Exception {
+    public ResponseEntity<?> onTransferFee(TransferRequest request) throws Exception {
         Transaction transFee = new Transaction();
         transFee.setFromAccount(request.getFromAccountNo());
         transFee.setToAccount(request.getToAccountNo());

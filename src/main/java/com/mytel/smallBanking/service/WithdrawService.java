@@ -22,7 +22,7 @@ public class WithdrawService {
     @Autowired
     TransactionRepository transactionRepository;
 
-    public ResponseEntity<?> onWithdraw(@RequestBody WithdrawRequest withdrawRequest) throws Exception {
+    public ResponseEntity<?> onWithdraw(WithdrawRequest withdrawRequest) throws Exception {
         Transaction transaction = new Transaction();
         transaction.setToAccount(null);
         transaction.setFromAccount(withdrawRequest.getFromAccountNo());
