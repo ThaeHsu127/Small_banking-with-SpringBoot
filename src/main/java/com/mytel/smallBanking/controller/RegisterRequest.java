@@ -1,16 +1,16 @@
 package com.mytel.smallBanking.controller;
 
 public class RegisterRequest {
-    private String accountId;
-    private  String name;
+    private Long accountId;
+    private String name;
     private String phone;
     private double availableBalance;
 
-    public String getAccountId() {
+    public Long getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(String accountId) {
+    public void setAccountId(Long accountId) {
         this.accountId = accountId;
     }
 

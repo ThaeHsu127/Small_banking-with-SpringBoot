@@ -18,9 +18,7 @@ public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name ="id")
-    private Long id;
-    private String transactionId;
+    private long transactionId;
     @Enumerated(EnumType.STRING)
     private TransactionType transactionType;
     private Long fromAccount;

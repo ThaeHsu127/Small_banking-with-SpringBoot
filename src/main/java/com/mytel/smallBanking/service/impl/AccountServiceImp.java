@@ -3,13 +3,13 @@ package com.mytel.smallBanking.service.impl;
 import com.mytel.smallBanking.controller.RegisterRequest;
 import com.mytel.smallBanking.model.Account;
 import com.mytel.smallBanking.repository.AccountRepository;
+import com.mytel.smallBanking.response.CountResponse;
+import com.mytel.smallBanking.response.TotalEmoneyResponse;
 import com.mytel.smallBanking.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class AccountServiceImp implements AccountService {
@@ -29,19 +29,24 @@ public class AccountServiceImp implements AccountService {
     }
 
     @Override
-    public List<RegisterRequest> findByAllAccount() {
-        return accountRepository.queryByAllGetAccount();
+    public ResponseEntity<?> showAllAccounts() {
+        return ResponseEntity.status(HttpStatus.OK).body(accountRepository.findAll());
     }
 
     @Override
-    public double countBalance() {
-        return accountRepository.queryByCountBalance();
-
+    public ResponseEntity<?> countBalance() {
+        CountResponse countResponse=new CountResponse();
+        countResponse.setTotalCount(accountRepository.queryByCountBalance());
+        countResponse.setResult("Success");
+        return ResponseEntity.status(HttpStatus.OK).body(countResponse);
     }
 
     @Override
-    public double calculateTotalMoney() {
-        return accountRepository.queryByCalculateTotalMoney();
+    public ResponseEntity<?> calculateTotalMoney() {
+        TotalEmoneyResponse totalResponse=new TotalEmoneyResponse();
+        totalResponse.setTotalMoney(accountRepository.queryByCalculateTotalMoney());
+        totalResponse.setResult("Success");
+        return ResponseEntity.status(HttpStatus.OK).body(totalResponse);
     }
 
 

@@ -16,9 +16,7 @@ public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name ="id")
-    private Long id;
-    private String accountId;
+    private Long accountId;
     private  String name;
     private String phone;
     private double availableBalance;

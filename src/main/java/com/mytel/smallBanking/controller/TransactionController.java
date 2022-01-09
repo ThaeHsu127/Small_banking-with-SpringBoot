@@ -1,56 +1,62 @@
 package com.mytel.smallBanking.controller;
 
 
-import com.mytel.smallBanking.exception.ResourceNotFoundException;
-import com.mytel.smallBanking.model.Transaction;
 import com.mytel.smallBanking.repository.TransactionRepository;
 import com.mytel.smallBanking.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 
 @RestController
 @RequestMapping("bank/transaction")
 public class TransactionController {
     @Autowired
-    DepositBusiness depositBusiness;
+    DepositService depositBusiness;
 
     @Autowired
-    WithdrawBusiness withdrawBusiness;
+    WithdrawService withdrawBusiness;
 
     @Autowired
-    TransferBusiness transferBusiness;
+    TransferService transferBusiness;
 
     @Autowired
     TransactionRepository transactionRepository;
+
+    @Autowired
+    TransactionService transactionService;
+
+
+
+    @PostMapping("/saveTrans")
+    public ResponseEntity<?> saveTransaction(@RequestBody TransactionRequest transaction) {
+        return transactionService.saveTrans(transaction);
+    }
+    @GetMapping
+    public ResponseEntity<?> showAllTransactions(){
+
+        return transactionService.showAllTransactions();
+    }
 
     @PostMapping("/deposit")
     public ResponseEntity<?> deposit(@RequestBody DepositRequest request) throws Exception {
         return depositBusiness.onDeposit(request);
 
     }
+
     @PostMapping("/withdraw")
     public ResponseEntity<?> withdraw(@RequestBody WithdrawRequest withdrawRequest) throws Exception {
         return withdrawBusiness.onWithdraw(withdrawRequest);
 
     }
+
     @PostMapping("/transfer")
     public ResponseEntity<?> transfer(@RequestBody TransferRequest transferRequest) throws Exception {
         return transferBusiness.onTransfer(transferRequest);
-
-
-
     }
 
-
-
-
+    @PostMapping("/transferFee")
+    public ResponseEntity<?> transferFee(@RequestBody TransferRequest transferRequest) throws Exception {
+        return transferBusiness.onTransferFee(transferRequest);
+    }
 }

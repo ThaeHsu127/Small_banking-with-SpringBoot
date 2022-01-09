@@ -5,6 +5,15 @@ public class TransferRequest {
     Long toAccountNo;
     Double amount;
     String content;
+    Double fee;
+
+    public Double getFee() {
+        return fee;
+    }
+
+    public void setFee(Double fee) {
+        this.fee = fee;
+    }
 
     public Long getToAccountNo() {
         return toAccountNo;

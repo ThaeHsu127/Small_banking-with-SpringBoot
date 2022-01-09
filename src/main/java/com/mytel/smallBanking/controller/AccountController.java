@@ -9,8 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("bank/account")
 public class AccountController {
@@ -23,15 +21,16 @@ public class AccountController {
 
     @PostMapping("/register")
     public ResponseEntity<?> registerAccount(@RequestBody RegisterRequest regRequest) {
-        return new ResponseEntity<>(accountService.register(regRequest), HttpStatus.OK);
+        return accountService.register(regRequest);
 
     }
+
     @GetMapping
-    public List<Account> showAllAccounts() {
-        return accountRepository.findAll();
+    public ResponseEntity<?> showAllAccounts() {
+        return accountService.showAllAccounts();
     }
 
-    @PutMapping("{id}")
+    @PutMapping("update/{id}")
     public ResponseEntity<?> updateAccount(@PathVariable("id") long id, @RequestBody RegisterRequest regRequest) {
         Account updateAccount = accountRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UpdateAccount not exist with id:" + id));
@@ -44,7 +43,7 @@ public class AccountController {
 
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<?> deleteAccount(@PathVariable Long id) {
         Account deleteAccount = accountRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Account not exist with id:" + id));
@@ -52,29 +51,18 @@ public class AccountController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    //get allAccount
-    @GetMapping("/getAllAccount")
-    public List<RegisterRequest> getAllAccounts() {
-        return accountService.findByAllAccount();
 
-    }
     //count total account which have balance >0
-//    @GetMapping("/count")
-//    public double countBalanceGreaterZero(){
-//        return accountService.countBalance();
-//
-//    }
-
     @GetMapping("/count")
     public ResponseEntity<?> countBalanceGreaterZero() {
-        return new ResponseEntity<>(accountService.countBalance(), HttpStatus.OK);
+        return accountService.countBalance();
 
     }
 
-    //calculate total emoney
+    //calculate total Emoney
     @GetMapping("/totalMoney")
     public ResponseEntity<?> calculateTotalMoney() {
-        return new ResponseEntity<>(accountService.calculateTotalMoney(), HttpStatus.OK);
+        return accountService.calculateTotalMoney();
 
     }
 
